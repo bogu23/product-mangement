@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 public class ProductController {
 
     @Autowired
@@ -41,7 +42,5 @@ public class ProductController {
     public void deleteProductById(@PathVariable long id) {
         productRepository.deleteById(id);
     }
-
-
 
 }
