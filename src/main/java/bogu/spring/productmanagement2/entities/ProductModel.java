@@ -14,7 +14,7 @@ public class ProductModel {
     private double price;
     private String image;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private ManufacturerModel manufacturer;
 
     public ManufacturerModel getManufacturer() {

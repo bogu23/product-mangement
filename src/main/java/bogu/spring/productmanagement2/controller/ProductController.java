@@ -43,4 +43,10 @@ public class ProductController {
         productRepository.deleteById(id);
     }
 
+    @GetMapping("getOrderedProducts")
+    public List<ProductModel> getProductsOrdered() {
+        List<ProductModel> orderedProducts = productRepository.getProductsOrderedByName();
+        return orderedProducts;
+    }
+
 }
