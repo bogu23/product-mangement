@@ -1,0 +1,16 @@
+Product
+id
+name
+description
+price
+manufacturer
+
+Manufacturer
+id
+name 
+address
+
+Un singur produs are un singur producator. OnetoOne
+Un singur produs are mai multi producatori. OneToMany
+Mai multe produse au un singur producator. ManyToOne
+Mai multe produse au mai multi producatori. ManyToMany
