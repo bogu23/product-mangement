@@ -14,6 +14,17 @@ public class ProductModel {
     private double price;
     private String image;
 
+    @ManyToOne
+    private ManufacturerModel manufacturer;
+
+    public ManufacturerModel getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(ManufacturerModel manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
     public long getId() {
         return id;
     }

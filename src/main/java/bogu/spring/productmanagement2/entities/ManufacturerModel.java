@@ -12,17 +12,6 @@ public class ManufacturerModel {
     private String name;
     private String address;
 
-    @ManyToOne
-    private ManufacturerModel manufacturer;
-
-    public ManufacturerModel getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(ManufacturerModel manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
     public long getId() {
         return id;
     }
