@@ -14,3 +14,8 @@ Un singur produs are un singur producator. OnetoOne
 Un singur produs are mai multi producatori. OneToMany
 Mai multe produse au un singur producator. ManyToOne
 Mai multe produse au mai multi producatori. ManyToMany
+
+
+Id utilizatorului si produsul care vrem sa i l cumpere.
+Vizualizarea cosului unui utilizator dupa id ul cosului (comenzii).
+Produsul se va adauga intr un cos, cos corespondent unui client.
