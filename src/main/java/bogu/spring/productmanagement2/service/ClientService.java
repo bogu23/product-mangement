@@ -58,6 +58,30 @@ public class ClientService {
             cartFound.setClientModel(clientModel);
         }
         cartFound.getProducts().add(productModel);
+
+        //calculam si totalul
+
         cartRepository.save(cartFound);
     }
+
+    public CartModel getCart(long clientId) {
+        Optional<ClientModel> clientModelOptional = clientRepository.findById(clientId);
+        if (clientModelOptional.isEmpty()) {
+            throw new RuntimeException("Client not exist!!!");
+        }
+        ClientModel clientModel = clientModelOptional.get();
+
+        List<CartModel> cartModels = clientModel.getCarts();
+        CartModel foundCart = null;
+
+        for (CartModel cart : cartModels){
+            if(cart.getStatus().equals(OrderStatusModel.OPEN)) {
+                foundCart = cart;
+            }
+        }
+
+        return foundCart;
+    }
+
+
 }

@@ -1,5 +1,7 @@
 package bogu.spring.productmanagement2.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ public class CartModel {
     private List<ProductModel> products = new ArrayList<>();
 
     @ManyToOne
+    @JsonIgnore
     private ClientModel clientModel;
 
     private double total;
@@ -46,6 +49,7 @@ public class CartModel {
     public void setProducts(List<ProductModel> products) {
         this.products = products;
     }
+
 
     public ClientModel getClientModel() {
         return clientModel;
