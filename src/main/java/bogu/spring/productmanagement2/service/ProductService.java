@@ -19,10 +19,13 @@ public class ProductService {
     }
 
     public void add(ProductModel productModel) {
-        if (productModel.getPrice() > 0 &&
-                productModel.getName() != null) {
-            productRepository.save(productModel);
+        if (productModel.getPrice() < 1) {
+            throw new RuntimeException("Product price should not be less than 1");
         }
+        if (productModel.getName() == null) {
+            throw new RuntimeException("Name is null!!! Please fill the name!");
+        }
+        productRepository.save(productModel);
     }
 
     public void edit(ProductModel productModel) {

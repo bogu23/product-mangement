@@ -3,6 +3,9 @@ package bogu.spring.productmanagement2.controller;
 import bogu.spring.productmanagement2.entities.ProductModel;
 import bogu.spring.productmanagement2.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +24,13 @@ public class ProductController {
     }
 
     @PostMapping("addProducts")
-    public void addProduct(@RequestBody ProductModel productToBeAdded) {
-        productService.add(productToBeAdded);
+    public ResponseEntity addProduct(@RequestBody ProductModel productToBeAdded) {
+        try {
+            productService.add(productToBeAdded);
+            return ResponseEntity.ok("Product added");
+        } catch (RuntimeException runtimeException) {
+            return new ResponseEntity<Object>("Product is not valid", new HttpHeaders(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("edit")
@@ -47,7 +55,5 @@ public class ProductController {
         List<ProductModel> orderedProducts = productService.getOrderedProducts();
         return orderedProducts;
     }
-
-
 
 }

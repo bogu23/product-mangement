@@ -27,4 +27,6 @@ public class ManufacturerController {
         Optional<ManufacturerModel> foundManufacturer = manufacturerRepository.findById(id);
         return foundManufacturer.get();
     }
+
+
 }
