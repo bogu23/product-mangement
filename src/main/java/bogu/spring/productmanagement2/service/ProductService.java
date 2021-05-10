@@ -29,8 +29,7 @@ public class ProductService {
     }
 
     public void edit(ProductModel productModel) {
-        if (productModel.getPrice() > 0 &&
-                productModel.getName() != null) {
+        if (productModel.getPrice() > 0 && productModel.getName() != null) {
             productRepository.save(productModel);
         }
     }

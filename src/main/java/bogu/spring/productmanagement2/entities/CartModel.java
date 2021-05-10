@@ -50,7 +50,6 @@ public class CartModel {
         this.products = products;
     }
 
-
     public ClientModel getClientModel() {
         return clientModel;
     }
