@@ -18,6 +18,10 @@ public class ManufacturerService {
         return manufacturerRepository.findAll();
     }
 
+    public void add(ManufacturerModel manufacturerModel) {
+        manufacturerRepository.save(manufacturerModel);
+    }
+
     public ManufacturerModel getManufacturerById(long id) {
         Optional<ManufacturerModel> foundManufacturer = manufacturerRepository.findById(id);
         ManufacturerModel manufacturerModel = foundManufacturer.get();
@@ -36,6 +40,8 @@ public class ManufacturerService {
     public void delete(long id) {
         manufacturerRepository.deleteById(id);
     }
+
+
 
 
 }

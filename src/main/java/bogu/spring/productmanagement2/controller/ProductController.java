@@ -56,4 +56,9 @@ public class ProductController {
         return orderedProducts;
     }
 
+    @PutMapping("addManufacturerToProduct/{idProduct}/{idManufacturer}")
+    public void addManufacturerToProduct(@PathVariable long idProduct,@PathVariable long idManufacturer) {
+        productService.addManufacturer(idProduct, idManufacturer);
+    }
+
 }
