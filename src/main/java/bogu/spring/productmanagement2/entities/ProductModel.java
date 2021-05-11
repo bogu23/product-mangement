@@ -15,6 +15,7 @@ public class ProductModel {
     private String image;
 
     @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "manufacturer_id")
     private ManufacturerModel manufacturer;
 
     public ManufacturerModel getManufacturer() {

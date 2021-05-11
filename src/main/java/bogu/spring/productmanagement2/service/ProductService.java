@@ -69,10 +69,8 @@ public class ProductService {
         }
         ProductModel productModel = optionalProductModel.get();
 
-        List<ProductModel> productModelList = manufacturerModel.getProductModel();
-        productModelList.add(productModel);
-
-        manufacturerRepository.save(manufacturerModel);
+        productModel.setManufacturer(manufacturerModel);
+        productRepository.save(productModel);
 
     }
 }
