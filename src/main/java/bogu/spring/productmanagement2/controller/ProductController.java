@@ -23,11 +23,11 @@ public class ProductController {
         return productModelList;
     }
 
-    @PostMapping("addProducts")
+    @PostMapping("addProduct")
     public ResponseEntity addProduct(@RequestBody ProductModel productToBeAdded) {
         try {
             productService.add(productToBeAdded);
-            return ResponseEntity.ok("Product added");
+            return ResponseEntity.ok("Product added!");
         } catch (RuntimeException runtimeException) {
             return new ResponseEntity<Object>("Product is not valid", new HttpHeaders(), HttpStatus.BAD_REQUEST);
         }

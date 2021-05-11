@@ -52,6 +52,7 @@ public class ClientService {
                 cartFound = cart;
             }
         }
+
         if (cartFound == null) {
             cartFound = new CartModel();
             cartFound.setStatus(OrderStatusModel.OPEN);
@@ -59,9 +60,25 @@ public class ClientService {
         }
         cartFound.getProducts().add(productModel);
 
-        //calculam si totalul
+        double total = 0;
+
+        for (ProductModel productModel1 : cartFound.getProducts()) {
+            total += productModel1.getPrice();
+        }
+        cartFound.setTotal(total);
 
         cartRepository.save(cartFound);
+    }
+
+    public List<CartModel> getAllCarts(long clientId) {
+        Optional<ClientModel> clientModelOptional = clientRepository.findById(clientId);
+        if (clientModelOptional.isEmpty()) {
+            throw new RuntimeException("Client doesn't exist!");
+        }
+        ClientModel clientModel = clientModelOptional.get();
+        List<CartModel> carts = clientModel.getCarts();
+
+        return carts;
     }
 
     public CartModel getCart(long clientId) {
@@ -74,14 +91,36 @@ public class ClientService {
         List<CartModel> cartModels = clientModel.getCarts();
         CartModel foundCart = null;
 
-        for (CartModel cart : cartModels){
-            if(cart.getStatus().equals(OrderStatusModel.OPEN)) {
+        double total = 0;
+        for (CartModel cart : cartModels) {
+            if (cart.getStatus().equals(OrderStatusModel.OPEN)) {
                 foundCart = cart;
             }
+        }
+
+        if (foundCart != null) {
+            for (ProductModel productModel1 : foundCart.getProducts()) {
+                total += productModel1.getPrice();
+            }
+            foundCart.setTotal(total);
         }
 
         return foundCart;
     }
 
+    public void changeStatus(long cartId) {
+        Optional<CartModel> foundCart = cartRepository.findById(cartId);
+        if (foundCart.isEmpty()) {
+            throw new RuntimeException("Cart not found!!");
+        }
+        CartModel cartModel = foundCart.get();
+
+        if (cartModel.getStatus().equals(OrderStatusModel.OPEN)) {
+            cartModel.setStatus(OrderStatusModel.DELIVERED);
+        }
+
+        cartRepository.save(cartModel);
+
+    }
 
 }
