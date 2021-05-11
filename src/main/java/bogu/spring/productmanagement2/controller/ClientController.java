@@ -46,8 +46,6 @@ public class ClientController {
         } catch (RuntimeException runtimeException) {
             return new ResponseEntity<Object>("Status NOT changed. Something went wrong!!", HttpStatus.BAD_REQUEST);
         }
-
-
     }
 
 

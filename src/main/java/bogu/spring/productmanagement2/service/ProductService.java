@@ -71,6 +71,5 @@ public class ProductService {
 
         productModel.setManufacturer(manufacturerModel);
         productRepository.save(productModel);
-
     }
 }
